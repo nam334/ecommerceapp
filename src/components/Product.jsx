@@ -2,19 +2,18 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {FaRupeeSign} from "react-icons/fa"
 import {AiFillStar} from "react-icons/ai"
-import {  increaseQuantity, removeFromCart } from '../dataSlice'
+import {  addToCart, increaseQuantity, removeFromCart, decreaseQuantity } from '../dataSlice'
 import { useContext } from 'react'
 import ThemeContext from './ThemeContext'
 
 const Product = ({product}) => {
     console.log(product)
     const dispatch = useDispatch()
+    const cart =  useSelector(store => store.data?.cart)
+    //console.log(cart?.[0]?.product?.id)
     const {theme} = useContext(ThemeContext)
-   
-    
-    
-   
-    const [qty, setQty] = useState('')
+    const [qty, setQty] = useState(1)
+    const [count, setCount] = useState(0)
    
   return (
     <div key={product.id} className={`card w-96 
@@ -32,18 +31,44 @@ const Product = ({product}) => {
     </div>
     <div className="flex items-center">
     <AiFillStar/>
-    {/* <h4 className='text-sm py-2 italic'>{product.rating.rate}</h4> */}
+    
     </div>
-    </div>
+    </div> 
    
-    <div className='my-2'>
-    <button type='button' className="bg-green-400 mx-1 text-slate-100 rounded-md p-2 text-sm cursor-pointer" onClick={(e) => {
+    <div className='my-2 flex'>
+    <button type='button' className="bg-orange-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer" onClick={(e) => {
                           e.preventDefault()
-                          // console.log(product.id, Number(qty))
-                            let quantity = Number(qty)
-                          // let p_id = product.id
-                          dispatch(increaseQuantity({product,quantity}))
-                    }}>Add to cart</button>
+                          // let quantity = Number(qty)
+                          // dispatch(increaseQuantity({product,quantity}))
+        }}>Buy now</button>
+      {
+        count === 0 ? <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer" onClick={(e) => {
+          e.preventDefault()
+          dispatch(addToCart({product,qty:1}))
+          setCount((prevCount)=> prevCount + 1)
+    }}>Add to cart</button> 
+    : 
+    <div className="bg-yellow-500 text-slate-100">
+            <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
+             onClick={(e) => {
+                                e.preventDefault()
+                                setCount((prevCount)=> prevCount + 1)
+                                setQty(qty + 1)
+                                dispatch(increaseQuantity({product, qty}))
+                            }}>+</button>
+                           {count}
+                            <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault()
+              setCount((prevCount)=> prevCount - 1)
+              setQty(qty - 1)
+              dispatch(decreaseQuantity({product, qty}))
+          }}>-</button>
+              </div>
+      } 
+       
+
+
     </div>
 </div>
   )

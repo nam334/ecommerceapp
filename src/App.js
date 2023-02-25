@@ -23,7 +23,7 @@ function App() {
       element: <Home/>,
     },
     {
-      path: "/cart",
+      path: "/cart", 
       element: <Cart/>,
     },
   ]);
