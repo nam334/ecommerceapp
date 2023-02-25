@@ -15,3 +15,17 @@ x{
   z-index: 9999999999999999999999999999999999;
   position: relative;
 }
+.rightsidebar{
+  top:0;
+  right: 0;
+  position: absolute;
+  z-index: 999999999999999;
+}
+.closeIcon{
+  top:20px;
+  right: 20px;
+  position: absolute;
+}
+.strike{
+  text-decoration: line-through;
+}

@@ -6,6 +6,7 @@ const dataslice = createSlice({
         totalData:[],
         copyData:[],
         cart:[], 
+        toggleSidebar:false
     },
     reducers:{
         fetchData:(state, action)=> {
@@ -16,19 +17,32 @@ const dataslice = createSlice({
             state = state.copyData.splice(0,1,action.payload)
            
         },
+        toggleSidenav:(state, action) => {
+            state.toggleSidebar = !state.toggleSidebar
+        },
         addToCart:(state, action) => {
-            console.log(action.payload)
+            console.log(action.payload) 
             state = state.cart.push(action.payload)
         },
-        // removeFromCart:(state, action) => {
-          
-        //      state.cart = state.cart.filter(product => product.product.id !==  action.payload)
-        // },
         increaseQuantity:(state, action)=>{
             console.log(action.payload)
             let count = action.payload.qty + 1
             console.log(count)
             state = state.cart.filter(cart=> cart.product.id === action.payload.product.id ? cart.qty = count  : cart.qty)
+        },
+        increasecartQuantity:(state, action)=>{
+            console.log(action.payload)
+            let count = action.payload.qty 
+            console.log(count)
+            state = state.cart.filter(cart=> cart.product.id === action.payload.cart.product.id ? cart.qty = count  : cart.qty)
+        },
+        decreasecartQuantity:(state, action)=>{
+            console.log(action.payload)
+            let count = action.payload.qty
+            if(count === 0)
+            state.cart = state.cart.filter(cart=> cart.product.id !== action.payload.cart.product.id )
+            else 
+            state = state.cart.filter(cart=> cart.product.id === action.payload.cart.product.id ? cart.qty = count  : cart.qty)
         },
         decreaseQuantity:(state, action)=>{
             console.log(action.payload)
@@ -39,15 +53,9 @@ const dataslice = createSlice({
             else
             state = state.cart.filter(cart=> cart.product.id === action.payload.product.id ? cart.qty = count  : cart.qty)
         },
-        // lowTohigh:(state, action) => {
-           
-        //     let arr = action.payload
-        //     state.totalData[0] = arr.sort((a,b) => a.price - b.price)
-        //     console.log(state.totalData)
-        // }
     }
 })
 
-export const {fetchSearchResult, fetchData,addToCart,
-     removeFromCart, increaseQuantity, lowTohigh, decreaseQuantity} = dataslice.actions  
+export const {fetchSearchResult, fetchData,addToCart, toggleSidenav,
+     removeFromCart, increaseQuantity, lowTohigh, decreaseQuantity,increasecartQuantity,decreasecartQuantity} = dataslice.actions  
 export default dataslice.reducer

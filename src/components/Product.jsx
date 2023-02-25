@@ -5,6 +5,7 @@ import {AiFillStar} from "react-icons/ai"
 import {  addToCart, increaseQuantity, removeFromCart, decreaseQuantity } from '../dataSlice'
 import { useContext } from 'react'
 import ThemeContext from './ThemeContext'
+import { discountCalculation } from '../functions'
 
 const Product = ({product}) => {
     console.log(product)
@@ -27,7 +28,12 @@ const Product = ({product}) => {
     <div className="flex items-center justify-between  w-full">
     <div className="flex items-center">
     <FaRupeeSign/>
-    <h4 className='text-sm py-2 italic'>{product.price}</h4>
+    <h4 className='text-sm py-2 italic'>
+         {/* {product.price} */}
+         {
+          product.discountRate ? <><span className='strike'>{product.price}</span> {discountCalculation(product.price,product.discountRate)} </>: product.price
+         }
+    </h4>
     </div>
     <div className="flex items-center">
     <AiFillStar/>

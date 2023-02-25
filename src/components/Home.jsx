@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { API_ENDPOINT } from '../config'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, fetchData, lowTohigh } from '../dataSlice'
+import {productsWithDiscounts} from '../productsWithDiscounts'
+import { mergeArrays } from '../functions'
 import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 import Product from './Product'
 import Header from './Header'
@@ -11,6 +13,7 @@ const Home = () => {
   const [arr, setArr] = useState([])
   const [desarr, setDesArr] = useState([])
   const [page, setPage] = useState(1)
+ 
  useEffect(()=>{
     fetchProducts()
     
@@ -22,8 +25,13 @@ const Home = () => {
   const fetchProducts = async() => {
         const data = await fetch(API_ENDPOINT)
         const result = await data.json()
-        console.log(result)
-        dispatch(fetchData(result)) 
+      
+
+        // let totalProducts = [...[result, productsWithDiscounts].reduce((m, a) => (a.forEach(o => m.has(o.ObjId) && Object.assign(m.get(o.ObjId), o) || m.set(o.ObjId, o)), m), new Map()).values()];
+        // console.log(totalProducts)
+        let totalProducts = mergeArrays(result, productsWithDiscounts)
+        console.log(totalProducts)
+        dispatch(fetchData(totalProducts)) 
   }
   
   const ascendingHandler = () => {
@@ -69,11 +77,8 @@ const Home = () => {
     }
     </div> 
     </div>
-
-
-
-    
     </div>
+   
     </>
    
   )
