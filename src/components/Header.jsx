@@ -94,7 +94,7 @@ const Header = () => {
               let qty = cart.qty - 1
               dispatch(decreasecartQuantity({cart, qty}))
           }}>-</button>
-              </div>
+              </div> 
                   </div>
                 </div>
               </div>

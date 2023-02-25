@@ -7,7 +7,7 @@ import { mergeArrays } from '../functions'
 import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 import Product from './Product'
 import Header from './Header'
-import Sidebar from './Sidebar'
+import Sidebar from './Sidebar' 
 
 const Home = () => { 
   const [arr, setArr] = useState([])

@@ -4,7 +4,7 @@ const navSlice = createSlice({
     name:"nav",
     initialState:{
         openMenu:false 
-    },
+    }, 
     reducers:{
         toggleMenu:(state)=>{
           state.openMenu = !state.openMenu
