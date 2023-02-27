@@ -11,7 +11,7 @@ const PaymentDetails = () => {
         sum += (cartItem.quantity ? cartItem.quantity : 1) * cartItem.product.price
        
     ))
-  return (
+  return ( 
     
     
     <div className='p-4'>

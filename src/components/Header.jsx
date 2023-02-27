@@ -93,7 +93,7 @@ const Header = () => {
               e.preventDefault()
               let qty = cart.qty - 1
               dispatch(decreasecartQuantity({cart, qty}))
-          }}>-</button>
+          }}>-</button> 
               </div> 
                   </div>
                 </div>

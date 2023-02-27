@@ -25,7 +25,7 @@ const Product = ({product}) => {
     <img src={product.image} alt="" className='w-28 mb-2 ' /> 
     <h2 className='text-sm font-semibold text-slate-600 my-2'>{product.title}</h2>
     <h4 className='text-sm'>{product.description}</h4>
-    <div className="flex items-center justify-between  w-full">
+    <div className="flex items-center justify-between  w-full"> 
     <div className="flex items-center">
     <FaRupeeSign/>
     <h4 className='text-sm py-2 italic'>

@@ -7,7 +7,7 @@ const dataslice = createSlice({
         copyData:[],
         cart:[], 
         toggleSidebar:false
-    },
+    }, 
     reducers:{
         fetchData:(state, action)=> {
             state = state.totalData.splice(0,1,action.payload)
