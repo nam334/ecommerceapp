@@ -14,5 +14,9 @@ export const mergeArrays = (arr1 = [], arr2 = []) => {
  export const discountCalculation = (price, discountRate) => {
     let calculatedPrice =  price - ((discountRate/100)*price)
     return calculatedPrice.toFixed(2)
+}
 
- }
+export const priceCalculation = (price, qty) => {
+   let totalPrice =  price * qty 
+   return totalPrice
+}

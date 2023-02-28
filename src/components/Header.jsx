@@ -8,6 +8,7 @@ import { decreasecartQuantity, increasecartQuantity, increaseQuantity } from '..
 
 import { toggleMenu } from '../navSlice';
 import UserContext from '../UserContext';
+import Bill from './Bill';
 import Search from './Search';
 import ThemeContext from './ThemeContext';
 const Header = () => {
@@ -61,8 +62,8 @@ const Header = () => {
     </div>
     {
       toggleSidebar && 
-    <nav class="flex w-72 h-screen bg-white shadow-2xl rightsidebar">
-      <div class="w-11/12 flex mx-auto p-2 ">
+    <nav class="flex w-72 h-screen bg-white shadow-2xl rightsidebar flex-col">
+      <div class="w-11/12 flex mx-auto p-2 flex-col">
         <div class="w-full h-full items-center justify-center
          text-gray-900 text-xl  border-gray-900 border-dashed">
           <div className='flex'> 
@@ -74,7 +75,8 @@ const Header = () => {
           {
               cart.length ?   cart.map(cart => (
               
-              <div className='flex items-center  border-t-2 my-4 py-2 border-gray-200'>
+             <>
+             <div className='flex items-center  border-t-2 my-4 py-2 border-gray-200'>
                 <img  src={cart.product.image} alt="product" className='w-16 h-16 border border-gray-200 p-2'/>
                 <div className='flex gap-3 flex-col p-3 justify-center '>
                   <h4 className='text-xs'>{cart.product.title}</h4>
@@ -98,13 +100,18 @@ const Header = () => {
                   </div>
                 </div>
               </div>
+             
+              </>
+              
             )): <div className='flex h-full items-center justify-center'><h1 className=''>Cart is empty</h1></div>
           }
            
          </div>
+        
       </div>
+      <Bill/>
     </nav>
-    } 
+    }  
      </>
   )
 }
