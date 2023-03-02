@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart,AiOutlineClose } from "react-icons/ai";
 import {BiRupee} from "react-icons/bi"
 import {  useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { decreasecartQuantity, increasecartQuantity, increaseQuantity } from '../dataSlice';
+import { calcGrandTotal, decreasecartQuantity, increasecartQuantity, increaseQuantity } from '../dataSlice';
 import { toggleMenu } from '../navSlice';
 import UserContext from '../UserContext';
 import Bill from './Bill';
@@ -21,7 +21,8 @@ const Header = () => {
   // console.log(cart && cart.qty)
   const dispatch = useDispatch()
   const grandTotal = useSelector(store => store.data.grandTotal)
-  
+  const  totalPrice = useSelector(store => store.data.totalPrice)
+  const totalDiscount = useSelector(store => store.data.totalDiscount)
   useEffect(()=>{
     let counter = 0
     cart.map(cart => (
@@ -38,8 +39,8 @@ const Header = () => {
   //   setPrice(price.toFixed(2))
   // },[price, cart])
   useEffect(()=>{
-    setPrice(grandTotal)
-  },[grandTotal])
+    dispatch(calcGrandTotal({totalPrice, totalDiscount}))
+  },[totalPrice, totalDiscount, dispatch])
   return (
      <>
      
@@ -56,7 +57,7 @@ const Header = () => {
         <div className='flex flex-col items-start'>
         <span>{count} items</span>
         <span className='flex justify-center items-center'><BiRupee className='text-xl' />
-         {price}
+         {grandTotal.toFixed(2)}
          </span>
         </div>
         </button>

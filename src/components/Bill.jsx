@@ -45,13 +45,13 @@ const Bill = () => {
       <h4>Total Discount Rate</h4> 
       <h4>{totalDiscount} </h4>
       </div>
-      <div className='flex justify-between py-1'>
+      {/* <div className='flex justify-between py-1'>
       <h4>Delivery charge</h4>
       <h4>{deliveryCharge} /-</h4>
-      </div>
+      </div> */}
       <div className='flex justify-between py-1 font-bold'>
       <h4>Grand Total</h4>
-      <h4>{grandTotal.toFixed(2)}</h4>
+      <h4>{grandTotal.toFixed(2)} /-</h4>
       {/* <h4>{total > 0 ? total.toFixed(2) : price.toFixed(2)} /-</h4> */}
       </div>
       </div>
