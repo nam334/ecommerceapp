@@ -11,8 +11,6 @@ import Bill from './Bill';
 import Search from './Search';
 import ThemeContext from './ThemeContext';
 
-
-
 const Header = () => {
   const cart = useSelector((store) => store.data?.cart)
   const {theme, setTheme} = useContext(ThemeContext)
@@ -22,7 +20,7 @@ const Header = () => {
   const [qty, setQty] = useState(0)
   // console.log(cart && cart.qty)
   const dispatch = useDispatch()
-  const grandTotal = useSelector(store => store.data?.grandTotal)
+  const grandTotal = useSelector(store => store.data.grandTotal)
   
   useEffect(()=>{
     let counter = 0
@@ -39,9 +37,9 @@ const Header = () => {
   //   ))
   //   setPrice(price.toFixed(2))
   // },[price, cart])
-  // useEffect(()=>{
-  //   setPrice(grandTotal)
-  // },[grandTotal])
+  useEffect(()=>{
+    setPrice(grandTotal)
+  },[grandTotal])
   return (
      <>
      
@@ -58,7 +56,7 @@ const Header = () => {
         <div className='flex flex-col items-start'>
         <span>{count} items</span>
         <span className='flex justify-center items-center'><BiRupee className='text-xl' />
-         {grandTotal}
+         {price}
          </span>
         </div>
         </button>

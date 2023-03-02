@@ -10,7 +10,8 @@ const Bill = () => {
   const cart = useSelector(store => store.data.cart) 
   const dispatch = useDispatch()
   const  totalPrice = useSelector(store => store.data.totalPrice)
- 
+  const totalDiscount = useSelector(store => store.data.totalDiscount)
+  const grandTotal = useSelector(store => store.data.grandTotal)
   useEffect(()=> {
     let price = 0, discountedPrice = 0
     cart?.map((cart)=> {
@@ -22,8 +23,8 @@ const Bill = () => {
   },[cart, discount, deliveryCharge])
  
   useEffect(()=>{
-    dispatch(calcGrandTotal(total))
-  },[ ])
+    dispatch(calcGrandTotal({totalPrice, totalDiscount}))
+  },[totalPrice, totalDiscount, dispatch])
   // useEffect(()=> {
   //   let discountedPrice = 0
   //   cart?.map((cart)=> (
@@ -41,8 +42,8 @@ const Bill = () => {
       <h4>{totalPrice.toFixed(2)} /-</h4>
       </div>
       <div className='flex justify-between py-1'>
-      <h4>Total Discount Percent</h4> 
-      <h4>{discount} %</h4>
+      <h4>Total Discount Rate</h4> 
+      <h4>{totalDiscount} </h4>
       </div>
       <div className='flex justify-between py-1'>
       <h4>Delivery charge</h4>
@@ -50,6 +51,7 @@ const Bill = () => {
       </div>
       <div className='flex justify-between py-1 font-bold'>
       <h4>Grand Total</h4>
+      <h4>{grandTotal.toFixed(2)}</h4>
       {/* <h4>{total > 0 ? total.toFixed(2) : price.toFixed(2)} /-</h4> */}
       </div>
       </div>

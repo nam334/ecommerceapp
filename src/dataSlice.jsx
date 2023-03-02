@@ -8,6 +8,7 @@ const dataslice = createSlice({
         cart:[], 
         toggleSidebar:false ,
         totalPrice:0,
+        totalDiscount : 0,
         grandTotal:0
     }, 
     reducers:{
@@ -23,16 +24,14 @@ const dataslice = createSlice({
         },
         addToCart:(state, action) => {
             console.log(action.payload) 
+            action.payload.product?.discountRate &&  (state.totalDiscount  = state.totalDiscount + action.payload.product?.discountRate)
             state.totalPrice = state.totalPrice + (action.payload.product.price * action.payload.qty)
             state = state.cart.push(action.payload)
-            
         },
         increaseQuantity:(state, action)=>{
             console.log(action.payload) 
             let count = action.payload.qty + 1
-            console.log(count)
-            
-            //state.totalPrice +=  action.payload.product.price * count
+
             state = state.cart.filter(cart=> cart.product.id === action.payload.product.id ? 
                 //(
                  cart.qty = count
@@ -41,6 +40,7 @@ const dataslice = createSlice({
         },
         increaseQty:(state,action)=>{
             console.log(action.payload.product.price, action.payload.qty,state.cart.length)
+            action.payload.product?.discountRate &&  (state.totalDiscount  = state.totalDiscount + action.payload.product?.discountRate)
             if(state.cart.length === 1){
                 state.totalPrice =  action.payload.product.price * (action.payload.qty + 1)
             }
@@ -51,6 +51,7 @@ const dataslice = createSlice({
         },
         increasecartQuantity:(state, action)=>{
            console.log(action.payload) 
+           action.payload.cart.product?.discountRate &&  (state.totalDiscount  = state.totalDiscount + action.payload.cart.product?.discountRate)
             let count = action.payload.qty    
             if(state.cart.length === 1){
                 state.totalPrice =  action.payload.cart.product.price * (action.payload.qty)
@@ -62,6 +63,7 @@ const dataslice = createSlice({
         },
         decreasecartQuantity:(state, action)=>{
             console.log(action.payload)
+            action.payload.cart?.product?.discountRate &&  (state.totalDiscount  = state.totalDiscount - action.payload.cart?.product?.discountRate)
             let count = action.payload.qty
             if(count === 0) 
             {
@@ -70,12 +72,14 @@ const dataslice = createSlice({
             }
             else {
                 state.totalPrice = state.totalPrice - (action.payload.cart.product.price)
+
             state = state.cart.filter(cart=> cart.product.id === action.payload.cart.product.id ? cart.qty = count  : cart.qty)
            
             }
         },
         decreaseQuantity:(state, action)=>{
             console.log(action.payload)
+            action.payload.product?.discountRate &&  (state.totalDiscount  = state.totalDiscount - action.payload.product?.discountRate)
             let count = action.payload.qty - 1
             console.log(count)
             if(count === 0)
@@ -92,7 +96,7 @@ const dataslice = createSlice({
        
         calcGrandTotal:(state,action) => {
             console.log(action.payload)
-            state.grandTotal = action.payload
+           state.grandTotal = action.payload.totalPrice - action.payload.totalDiscount
         }   
     }
 })
