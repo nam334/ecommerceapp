@@ -8,7 +8,7 @@ export const store = configureStore({
         data:dataSlice,
         nav:navSlice,
     }
-})
+}) 
 
  
 

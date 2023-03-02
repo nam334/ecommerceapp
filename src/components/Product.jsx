@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {FaRupeeSign} from "react-icons/fa"
 import {AiFillStar} from "react-icons/ai"
-import {  addToCart, increaseQuantity, removeFromCart, decreaseQuantity } from '../dataSlice'
+import {  addToCart, increaseQuantity, removeFromCart, decreaseQuantity, increaseQty } from '../dataSlice'
 import { useContext } from 'react'
 import ThemeContext from './ThemeContext'
 import { discountCalculation } from '../functions'
 
 const Product = ({product}) => {
-    console.log(product)
+   
     const dispatch = useDispatch()
     const cart =  useSelector(store => store.data?.cart)
-    //console.log(cart?.[0]?.product?.id)
+   
     const {theme} = useContext(ThemeContext)
     const [qty, setQty] = useState(1)
     const [count, setCount] = useState(0)
@@ -61,7 +61,8 @@ const Product = ({product}) => {
                                 setCount((prevCount)=> prevCount + 1)
                                 setQty(qty + 1)
                                 dispatch(increaseQuantity({product, qty}))
-                            }}>+</button>
+                                dispatch(increaseQty({product,qty}))
+                             }}>+</button>
                            {count}
                             <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
             onClick={(e) => {

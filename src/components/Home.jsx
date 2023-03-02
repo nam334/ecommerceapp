@@ -12,7 +12,7 @@ import Sidebar from './Sidebar'
 const Home = () => { 
   const [arr, setArr] = useState([])
   const [desarr, setDesArr] = useState([])
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1) 
  
  useEffect(()=>{
     fetchProducts()

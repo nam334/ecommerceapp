@@ -5,12 +5,14 @@ import {BiRupee} from "react-icons/bi"
 import {  useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { decreasecartQuantity, increasecartQuantity, increaseQuantity } from '../dataSlice';
-
 import { toggleMenu } from '../navSlice';
 import UserContext from '../UserContext';
 import Bill from './Bill';
 import Search from './Search';
 import ThemeContext from './ThemeContext';
+
+
+
 const Header = () => {
   const cart = useSelector((store) => store.data?.cart)
   const {theme, setTheme} = useContext(ThemeContext)
@@ -20,9 +22,7 @@ const Header = () => {
   const [qty, setQty] = useState(0)
   // console.log(cart && cart.qty)
   const dispatch = useDispatch()
-  // const toggleHandler = () => {
-  //   dispatch(toggleMenu())
-  // }
+  const grandTotal = useSelector(store => store.data?.grandTotal)
   
   useEffect(()=>{
     let counter = 0
@@ -32,13 +32,16 @@ const Header = () => {
     setCount(counter)
   },[count, cart])
 
-  useEffect(()=>{
-    let price = 0
-    cart.map(cart => (
-      price += (cart.qty * cart.product.price)
-    ))
-    setPrice(price.toFixed(2))
-  },[price, cart])
+  // useEffect(()=>{
+  //   let price = 0
+  //   cart.map(cart => (
+  //     price += (cart.qty * cart.product.price)
+  //   ))
+  //   setPrice(price.toFixed(2))
+  // },[price, cart])
+  // useEffect(()=>{
+  //   setPrice(grandTotal)
+  // },[grandTotal])
   return (
      <>
      
@@ -54,7 +57,9 @@ const Header = () => {
         <AiOutlineShoppingCart className='text-xl'/>
         <div className='flex flex-col items-start'>
         <span>{count} items</span>
-        <span className='flex justify-center items-center'><BiRupee className='text-xl' /> {price}</span>
+        <span className='flex justify-center items-center'><BiRupee className='text-xl' />
+         {grandTotal}
+         </span>
         </div>
         </button>
         </div>
@@ -88,6 +93,7 @@ const Header = () => {
                                 e.preventDefault()
                                 let qty = cart.qty + 1
                                 dispatch(increasecartQuantity({cart, qty}))
+                                
                             }}>+</button>
                            {cart.qty}
                             <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
