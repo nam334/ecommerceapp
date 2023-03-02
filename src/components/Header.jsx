@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import { AiOutlineShoppingCart,AiOutlineClose } from "react-icons/ai";
 import {BiRupee} from "react-icons/bi"
+import {FaRupeeSign} from "react-icons/fa"
 import {  useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { calcGrandTotal, decreasecartQuantity, increasecartQuantity, increaseQuantity } from '../dataSlice';
@@ -44,8 +45,8 @@ const Header = () => {
   return (
      <>
      
-     <div className='bg-cyan-600 py-4 flex justify-around items-center'>
-        <div className="font-normal text-slate-100 text-lg cursor-pointer"><Link to='/'>Shopping Cart</Link></div>
+     <div className='bg-cyan-600 py-2 flex justify-around items-center '>
+        <div className="font-mono text-slate-100 text-lg  font-bold cursor-pointer poppins"><Link to='/'>Shopping Cart</Link></div>
         <div>
             <Search/>
         </div>
@@ -63,7 +64,7 @@ const Header = () => {
         </button>
         </div>
       </div>
-    </div>
+    </div> 
     {
       toggleSidebar && 
     <nav class="flex w-72 h-screen bg-white shadow-2xl rightsidebar flex-col">
@@ -85,17 +86,20 @@ const Header = () => {
                 <div className='flex gap-3 flex-col p-3 justify-center '>
                   <h4 className='text-xs'>{cart.product.title}</h4>
                   <div className='flex justify-between items-end'>
-                  <h4 className='text-sm font-bold'>{cart.product.price}</h4>
-                  <div className="bg-yellow-500 text-slate-100">
-            <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
+                  <h4 className='text-sm font-bold py-2 text-black-200 flex justify-center items-center'>
+                  <FaRupeeSign/>{cart.product.price}
+                  </h4>
+                  <div className="bg-yellow-500 text-slate-100 rounded-md">
+            <button type='button' className="bg-yellow-500 mx-1 text-slate-200 rounded-md p-2 text-sm cursor-pointer"
              onClick={(e) => {
                                 e.preventDefault()
                                 let qty = cart.qty + 1
                                 dispatch(increasecartQuantity({cart, qty}))
                                 
                             }}>+</button>
-                           {cart.qty}
-                            <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
+                           <span className='text-slate-200'>{cart.qty}</span>
+                            <button type='button' className="bg-yellow-500 mx-1 text-slate-200 
+                            rounded-md p-2 text-sm cursor-pointer"
             onClick={(e) => {
               e.preventDefault()
               let qty = cart.qty - 1

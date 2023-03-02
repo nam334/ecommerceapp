@@ -29,3 +29,25 @@ x{
 .strike{
   text-decoration: line-through;
 }
+.bg-cyan-600{
+  background-color: #efefeb;
+}
+.bg-cyan-6000{
+  background-color: #f9f9f5;
+}
+.text-slate-100{
+  color: #757575
+}
+.bg-cyan-800{
+  background-color: #50808e
+}
+.bg-yellow-500{
+  background-color: #f28482;
+}
+.poppins{
+  font-family: 'Poppins', sans-serif;
+}
+.showMoreText{
+  text-decoration: none;
+  font-weight: 600;
+}

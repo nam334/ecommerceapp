@@ -8,6 +8,7 @@ import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
 import Product from './Product'
 import Header from './Header'
 import Sidebar from './Sidebar' 
+import Sidenav from './Sidenav'
 
 const Home = () => { 
   const [arr, setArr] = useState([])
@@ -57,8 +58,12 @@ const Home = () => {
   return (
     <>
     <Header/>
-     <div className="row">
-   
+    <div class="grid grid-rows-3 grid-flow-col gap-4">
+    <div class="row-span-3 ...">
+      <Sidenav/>
+      </div>
+    <div class="col-span-2 ...">
+    <div className="row">
     <div className="col-span-12">
     {/* <div className='flex justify-end'>
        {productsData &&  <button type='button' onClick={ascendingHandler} className="bg-cyan-300 text-slate-700 
@@ -67,7 +72,7 @@ const Home = () => {
         {productsData &&  <button type='button' onClick={descendingHandler} className="bg-cyan-300 text-slate-700 
        font-medium italic rounded text-sm p-2 my-3 mx-3">Sort by price (high to low) </button>}
     </div> */}
-    <div className='flex flex-wrap '>
+    <div className='flex flex-wrap justify-center my-10'>
     {
       productsData ? productsData.length > 1 ? 
      productsData.slice((page * 5) - 5, page * 5).map((product)=> (
@@ -78,7 +83,10 @@ const Home = () => {
     </div> 
     </div>
     </div>
-   
+  </div>
+  
+</div>
+    
     </>
    
   )

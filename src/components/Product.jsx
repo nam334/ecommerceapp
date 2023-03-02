@@ -6,6 +6,7 @@ import {  addToCart, increaseQuantity, removeFromCart, decreaseQuantity, increas
 import { useContext } from 'react'
 import ThemeContext from './ThemeContext'
 import { discountCalculation } from '../functions'
+import ShowMoreText from "react-show-more-text";
 
 const Product = ({product}) => {
    
@@ -17,21 +18,42 @@ const Product = ({product}) => {
     const [count, setCount] = useState(0)
    
   return (
-    <div key={product.id} className={`card w-96 
-     border-2 border-slate-300 p-3 flex flex-col 
-    items-center rounded  m-4 mx-2 justify-between text-slate-500
-    ${theme === "light" ? "bg-white" : "bg-cyan-600 text-slate-100"}`}>
-
-    <img src={product.image} alt="" className='w-28 mb-2 ' /> 
+    <div key={product.id} className={`card w-80
+     p-3 flex flex-col 
+     hover:bg-cyan-6000 cursor-pointer
+    items-center rounded-xl m-4 mx-2 justify-between text-slate-500 fira-sans
+    ${theme === "light" ? "bg-cyan-600 " : "bg-cyan-600 text-slate-200"}`}>
+    <div className='rounded-md p-4 bg-white'>
+    <img src={product.image} alt="" className='w-28 mb-2 h-36 ' /> 
+    </div>
     <h2 className='text-sm font-semibold text-slate-600 my-2'>{product.title}</h2>
-    <h4 className='text-sm'>{product.description}</h4>
+    
+    <ShowMoreText
+                /* Default options */
+                lines={3}
+                more="Show more"
+                less="Show less"
+                className="content-css text-sm"
+                anchorClass="showMoreText cursor-pointer"
+                //onClick={this.executeOnClick}
+                expanded={false}
+                // width={280}
+                //truncatedEndingComponent={"... "}
+               // className='text-sm'
+            >
+              <h4 >
+      {product.description}</h4>
+      </ShowMoreText>
     <div className="flex items-center justify-between  w-full"> 
     <div className="flex items-center">
     <FaRupeeSign/>
-    <h4 className='text-sm py-2 italic'>
+    <h4 className='text-sm py-2 text-black-200 font-bold'>
          {/* {product.price} */}
          {
-          product.discountRate ? <><span className='strike'>{product.price}</span> {discountCalculation(product.price,product.discountRate)} </>: product.price
+          product.discountRate ? <>
+          <span className='strike mr-1'>{product.price}</span> 
+          {discountCalculation(product.price,product.discountRate)} </>
+          : <span className=''>{product.price}</span>
          }
     </h4>
     </div>
@@ -42,20 +64,22 @@ const Product = ({product}) => {
     </div> 
    
     <div className='my-2 flex'>
-    <button type='button' className="bg-orange-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer" onClick={(e) => {
+    <button type='button' className="bg-cyan-800 mx-1 text-slate-200 rounded-md p-2 text-sm cursor-pointer" onClick={(e) => {
                           e.preventDefault()
                           // let quantity = Number(qty)
                           // dispatch(increaseQuantity({product,quantity}))
         }}>Buy now</button>
       {
-        count === 0 ? <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer" onClick={(e) => {
+        count === 0 ? <button type='button' className="bg-yellow-500 mx-1
+         text-slate-200 rounded-md p-2 text-sm cursor-pointer" onClick={(e) => {
           e.preventDefault()
           dispatch(addToCart({product,qty:1}))
           setCount((prevCount)=> prevCount + 1)
     }}>Add to cart</button> 
     : 
-    <div className="bg-yellow-500 text-slate-100">
-            <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
+    <div className="bg-yellow-500 text-slate-200 rounded-md ">
+            <button type='button' className="bg-yellow-500 mx-1 text-slate-200
+             rounded-md p-2 text-sm cursor-pointer"
              onClick={(e) => {
                                 e.preventDefault()
                                 setCount((prevCount)=> prevCount + 1)
@@ -64,7 +88,8 @@ const Product = ({product}) => {
                                 dispatch(increaseQty({product,qty}))
                              }}>+</button>
                            {count}
-                            <button type='button' className="bg-yellow-500 mx-1 text-slate-100 rounded-sm p-2 text-sm cursor-pointer"
+                            <button type='button' className="bg-yellow-500 mx-1 
+                            text-slate-200 rounded-md p-2 text-sm cursor-pointer"
             onClick={(e) => {
               e.preventDefault()
               setCount((prevCount)=> prevCount - 1)
