@@ -58,7 +58,8 @@ const Product = ({product}) => {
     </h4>
     </div>
     <div className="flex items-center">
-    <AiFillStar/>
+    <h4 className='text-sm py-2 text-black-200 font-semibold'>{product.rating.rate}</h4>
+    <AiFillStar className='ratingStar' fill="red" />
     
     </div>
     </div> 

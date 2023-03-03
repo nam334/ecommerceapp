@@ -20,3 +20,7 @@ export const priceCalculation = (price, qty) => {
    let totalPrice =  price * qty 
    return totalPrice
 } 
+
+export const ratingColorCalculation = (rating, total) => {
+   
+}
