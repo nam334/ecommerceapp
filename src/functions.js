@@ -22,5 +22,6 @@ export const priceCalculation = (price, qty) => {
 } 
 
 export const ratingColorCalculation = (rating, total) => {
-   
+   let value = (rating/total)*100
+   return value
 }

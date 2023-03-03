@@ -7,9 +7,16 @@ import { useContext } from 'react'
 import ThemeContext from './ThemeContext'
 import { discountCalculation } from '../functions'
 import ShowMoreText from "react-show-more-text";
+import styled, { keyframes } from 'styled-components';
+import {ratingColorCalculation} from '../functions'
 
 const Product = ({product}) => {
-   
+ 
+  const Icon = styled(AiFillStar)`
+  overflow: hidden;
+  filter: brightness(${ratingColorCalculation(product.rating.rate,5)}%);
+  `;
+
     const dispatch = useDispatch()
     const cart =  useSelector(store => store.data?.cart)
    
@@ -44,7 +51,7 @@ const Product = ({product}) => {
               <h4 >
       {product.description}</h4>
       </ShowMoreText>
-    <div className="flex items-center justify-between  w-full"> 
+    <div className="flex items-center justify-between  w-full">  
     <div className="flex items-center">
     <FaRupeeSign/>
     <h4 className='text-sm py-2 text-black-200 font-bold'>
@@ -59,8 +66,8 @@ const Product = ({product}) => {
     </div>
     <div className="flex items-center">
     <h4 className='text-sm py-2 text-black-200 font-semibold'>{product.rating.rate}</h4>
-    <AiFillStar className='ratingStar' fill="red" />
-    
+    {/* <AiFillStar className='ratingStar' fill="red" /> */}
+    <Icon fill="#FF007F"/>
     </div>
     </div> 
    
