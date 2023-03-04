@@ -1,3 +1,4 @@
+
 .test{
  
     position: absolute;
@@ -55,4 +56,29 @@ x{
  
   overflow: hidden;
   filter: brightness(0.85);
+}
+.multi-range-slider {
+  display: flex;
+  position: relative;
+  border: none !important;
+  box-shadow: none !important;
+  /* border: solid 1px gray; */
+  /* border-radius: 10px; */
+  padding: 20px 10px;
+  /* box-shadow: 1px 1px 4px black; */
+  flex-direction: column;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+ .ruler-rule {
+  display: none !important;
+}
+.multi-range-slider .bar-inner {
+  background-color: #50808e !important;
+}
+.multi-range-slider .thumb::before {
+  background-color: #50808e !important;
+  border: none !important;
+  box-shadow: none !important;
 }

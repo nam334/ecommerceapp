@@ -67,9 +67,9 @@ const Header = () => {
     </div> 
     {
       toggleSidebar && 
-    <nav class="flex w-72 h-screen bg-white shadow-2xl rightsidebar flex-col">
-      <div class="w-11/12 flex mx-auto p-2 flex-col">
-        <div class="w-full h-full items-center justify-center
+    <nav className="flex w-72 h-screen bg-white shadow-2xl rightsidebar flex-col">
+      <div className="w-11/12 flex mx-auto p-2 flex-col">
+        <div className="w-full h-full items-center justify-center
          text-gray-900 text-xl  border-gray-900 border-dashed">
           <div className='flex'> 
           <AiOutlineClose  className='closeIcon cursor-pointer'   onClick={()=> dispatch(toggleMenu())} />

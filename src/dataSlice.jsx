@@ -5,6 +5,7 @@ const dataslice = createSlice({
     initialState:{
         totalData:[],
         copyData:[],
+        filteredData:[],
         cart:[], 
         toggleSidebar:false ,
         totalPrice:0,
@@ -18,6 +19,15 @@ const dataslice = createSlice({
         fetchSearchResult:(state, action)=> {
             state = state.copyData.splice(0,1,action.payload)
            
+        },
+        filterByPrice:(state,action) => {
+         
+        
+          //console.log(action.payload)
+          //state.filteredData=[]
+        state.filteredData = state.totalData[0]?.filter(cart => cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue)
+    
+       
         },
         toggleSidenav:(state, action) => {
             state.toggleSidebar = !state.toggleSidebar
@@ -102,6 +112,6 @@ const dataslice = createSlice({
 })
 
 export const {fetchSearchResult, fetchData,addToCart, toggleSidenav,calcGrandTotal,calcTotalPrice,
-    increaseQty,
+    increaseQty,filterByPrice,
      removeFromCart, increaseQuantity, lowTohigh, decreaseQuantity,increasecartQuantity,decreasecartQuantity} = dataslice.actions  
 export default dataslice.reducer

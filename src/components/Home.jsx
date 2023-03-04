@@ -20,8 +20,7 @@ const Home = () => {
     
  },[])
   const dispatch = useDispatch()
- const productsData = useSelector((store) => store.data.copyData && store.data.copyData.length ? store.data.copyData[0] : store.data.totalData[0])
- console.log(productsData)
+ const productsData = useSelector((store) => store.data.filteredData && store.data.filteredData.length ? store.data.filteredData : store.data.totalData[0])
  const openMenu  = useSelector((store)=> store.nav.openMenu)
   const fetchProducts = async() => {
         const data = await fetch(API_ENDPOINT)
@@ -58,11 +57,11 @@ const Home = () => {
   return (
     <>
     <Header/>
-    <div class="grid grid-rows-3 grid-flow-col gap-4">
-    <div class="row-span-3 ...">
+    <div className="grid grid-rows-3 grid-flow-col gap-4">
+    <div className="row-span-3 shadow-2xl w-56">
       <Sidenav/>
       </div>
-    <div class="col-span-2 ...">
+    <div className="col-span-2">
     <div className="row">
     <div className="col-span-12">
     {/* <div className='flex justify-end'>
@@ -75,7 +74,8 @@ const Home = () => {
     <div className='flex flex-wrap justify-center my-10'>
     {
       productsData ? productsData.length > 1 ? 
-     productsData.slice((page * 5) - 5, page * 5).map((product)=> (
+    //  productsData.slice((page * 5) - 5, page * 5).map((product)=> (
+      productsData.map((product)=> (
         <Product product={product} key={product.id}/> 
      ))  
       :  <Product product={productsData} key={productsData.id}/>  : <h1>LOADING.......</h1>

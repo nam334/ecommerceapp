@@ -10,12 +10,13 @@ import ShowMoreText from "react-show-more-text";
 import styled, { keyframes } from 'styled-components';
 import {ratingColorCalculation} from '../functions'
 
+// const Icon = styled(AiFillStar)`
+//   overflow: hidden;
+//   filter: brightness(${ratingColorCalculation(product?.rating?.rate,5)}%);
+//   `;
 const Product = ({product}) => {
- 
-  const Icon = styled(AiFillStar)`
-  overflow: hidden;
-  filter: brightness(${ratingColorCalculation(product.rating.rate,5)}%);
-  `;
+     console.log(product.title)
+  
 
     const dispatch = useDispatch()
     const cart =  useSelector(store => store.data?.cart)
@@ -65,9 +66,9 @@ const Product = ({product}) => {
     </h4>
     </div>
     <div className="flex items-center">
-    <h4 className='text-sm py-2 text-black-200 font-semibold'>{product.rating.rate}</h4>
+    <h4 className='text-sm py-2 text-black-200 font-semibold'>{product?.rating?.rate}</h4>
     {/* <AiFillStar className='ratingStar' fill="red" /> */}
-    <Icon fill="#FF007F"/>
+    {/* <Icon fill="#FF007F"/> */}
     </div>
     </div> 
    
