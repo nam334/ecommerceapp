@@ -6,10 +6,13 @@ import MultiRangeSlider, { ChangeResult } from "multi-range-slider-react";
 
 const Sidenav = ({productsData}) => { 
   const [checked, setChecked] = useState(false) 
- 
+  const [checkedRating, setCheckedRating] = useState(false) 
   const [minValue, setMinValue] = useState(0);
-	const [maxValue, setMaxValue] = useState(0);
+	const [maxValue, setMaxValue] = useState(1000);
+
   const [rating, setRating] = useState(0)
+  const [starrating, setStarRating] = useState(0)
+
   const dispatch  = useDispatch()
   const ratingChangeHandler = (check) => {
      setChecked(check => !check)
@@ -19,6 +22,15 @@ const Sidenav = ({productsData}) => {
       !!checked && setRating(0)
       !checked && dispatch(filterByPrice({maxValue,minValue,rating}))
   }
+  const starRatingChangeHandler = (checked) => {
+    setCheckedRating(checked => !checked)
+    !checkedRating && setRating(3)
+    
+   
+    !!checkedRating && setRating(0)
+    // console.log(checkedRating,starrating)
+     !checkedRating && dispatch( filterByPrice({maxValue,minValue,rating}))
+ }
   return (
   <div className='shadow-2xl p-6 h-full w-full'>
     <span className='font-bold font-mono text-slate-100 text-xl  cursor-pointer poppins py-2'>FILTERS</span>
@@ -53,7 +65,9 @@ const Sidenav = ({productsData}) => {
     <h4 className="block px-2  text-sm font-medium text-slate-100 dark:text-white mt-2">4 * & above</h4>
     </div>
     <div className='flex items-end'>
-    <input type="checkbox"  />
+    <input type="checkbox" checked={checkedRating}
+        onChange={(e)=>starRatingChangeHandler(e.target.checked)}
+        value={checkedRating} />
     <h4 className="block px-2 text-sm font-medium text-slate-100 dark:text-white mt-2">3 * & above</h4>
     </div>
   </div>

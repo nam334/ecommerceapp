@@ -20,8 +20,8 @@ const dataslice = createSlice({
             state = state.copyData.splice(0,1,action.payload)
         },
         filterByPrice:(state,action) => {
-            console.log(action.payload)
-        if(action.payload.rating>0) 
+            //console.log(action.payload)
+        if(action.payload.rating > 0) 
         {
             state.filteredData = state.totalData[0]?.filter(cart =>
             (cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue) &&  cart.rating.rate  >= action.payload.rating )
@@ -29,16 +29,18 @@ const dataslice = createSlice({
         else
         state.filteredData = state.totalData[0]?.filter(cart => cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue)
         },
+       
 
-        filterByRating:(state,action) => {
-            
-        // console.log("before", state.filteredData )
-        // state.filteredData = state.totalData[0]?.filter(cart => cart.rating.rate  >= action.payload.rating)
-        // console.log("after", state.filteredData )
-       
-       
-        
-        },
+        // filterByRating:(state,action) => {
+        //     console.log(action.payload)
+        //     if(action.payload.starrating >0) 
+        //     {
+        //         state.filteredData = state.totalData[0]?.filter(cart =>
+        //         (cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue) &&  cart.rating.rate  >= action.payload.starrating )
+        //     }
+        //     else
+        //     state.filteredData = state.totalData[0]?.filter(cart => cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue)
+        // },
         toggleSidenav:(state, action) => {
             state.toggleSidebar = !state.toggleSidebar
         },
