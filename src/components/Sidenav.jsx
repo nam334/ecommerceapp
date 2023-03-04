@@ -15,7 +15,7 @@ const Sidenav = ({productsData}) => {
 
   const dispatch  = useDispatch()
   const ratingChangeHandler = (check) => {
-     setChecked(check => !check)
+     setChecked(check => !check) 
      console.log(!checked)
       //dispatch(filterByRating({checked,rating}))
       !checked && setRating(4)

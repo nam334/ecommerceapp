@@ -29,7 +29,7 @@ const dataslice = createSlice({
         else
         state.filteredData = state.totalData[0]?.filter(cart => cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue)
         },
-       
+        
 
         // filterByRating:(state,action) => {
         //     console.log(action.payload)

@@ -19,7 +19,7 @@ const Home = () => {
     fetchProducts()
     
  },[])
-
+ 
  
   const dispatch = useDispatch()
 //  const productsData = useSelector((store) => store.data.filteredData && store.data.filteredData.length ? store.data.filteredData : store.data.totalData[0])
