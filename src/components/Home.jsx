@@ -19,8 +19,11 @@ const Home = () => {
     fetchProducts()
     
  },[])
+
+ 
   const dispatch = useDispatch()
- const productsData = useSelector((store) => store.data.filteredData && store.data.filteredData.length ? store.data.filteredData : store.data.totalData[0])
+//  const productsData = useSelector((store) => store.data.filteredData && store.data.filteredData.length ? store.data.filteredData : store.data.totalData[0])
+ const productsData = useSelector((store) => store.data?.filteredData?.length ? store.data.filteredData : store.data.totalData[0] )
  const openMenu  = useSelector((store)=> store.nav.openMenu)
   const fetchProducts = async() => {
         const data = await fetch(API_ENDPOINT)
@@ -59,7 +62,7 @@ const Home = () => {
     <Header/>
     <div className="grid grid-rows-3 grid-flow-col gap-4">
     <div className="row-span-3 shadow-2xl w-56">
-      <Sidenav/>
+      <Sidenav productsData={productsData}/>
       </div>
     <div className="col-span-2">
     <div className="row">

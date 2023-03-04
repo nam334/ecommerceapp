@@ -15,9 +15,6 @@ import {ratingColorCalculation} from '../functions'
 //   filter: brightness(${ratingColorCalculation(product?.rating?.rate,5)}%);
 //   `;
 const Product = ({product}) => {
-     console.log(product.title)
-  
-
     const dispatch = useDispatch()
     const cart =  useSelector(store => store.data?.cart)
    
