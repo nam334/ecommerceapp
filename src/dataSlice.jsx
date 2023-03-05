@@ -35,7 +35,12 @@ const dataslice = createSlice({
         sortByRatingLowToHigh:(state, action) => {
             state.filteredData =  state.totalData[0].sort((a,b) => a.rating.rate - b.rating.rate)
         },
- 
+        sortByPriceHighToLow:(state, action) => {
+            state.filteredData =  state.totalData[0].sort((a,b) => b.price - a.price)
+        },
+        sortByPriceLowToHigh:(state, action) => {
+            state.filteredData =  state.totalData[0].sort((a,b) => a.price - b.price)
+        },
         // filterByRating:(state,action) => {
         //     console.log(action.payload)
         //     if(action.payload.starrating >0) 
@@ -129,6 +134,6 @@ const dataslice = createSlice({
 })
 
 export const {fetchSearchResult, fetchData,addToCart, toggleSidenav,calcGrandTotal,calcTotalPrice,
-    increaseQty,filterByPrice,filterByRating,sortByRatingHighToLow,sortByRatingLowToHigh,
+    increaseQty,filterByPrice,filterByRating,sortByRatingHighToLow,sortByRatingLowToHigh, sortByPriceHighToLow, sortByPriceLowToHigh,
      removeFromCart, increaseQuantity, lowTohigh, decreaseQuantity,increasecartQuantity,decreasecartQuantity} = dataslice.actions  
 export default dataslice.reducer

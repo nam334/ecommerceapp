@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { sortByRatingHighToLow,sortByRatingLowToHigh } from '../dataSlice'
+import { sortByRatingHighToLow,sortByRatingLowToHigh,sortByPriceHighToLow,sortByPriceLowToHigh } from '../dataSlice'
 
 const Sorting = () => {
 const [toggle, setToggle] = useState(false)
@@ -14,6 +14,12 @@ const hightolowratingHandler = () => {
 }
 const lowtohighratingHandler = () => {
     dispatch(sortByRatingLowToHigh())
+}
+const hightolowpriceHandler = () => {
+    dispatch(sortByPriceHighToLow())
+}
+const lowtohighpriceHandler = () => {
+    dispatch(sortByPriceLowToHigh())
 }
   return (
    <>
@@ -36,10 +42,10 @@ const lowtohighratingHandler = () => {
       tabindex="-1" id="menu-item-0" onClick={hightolowratingHandler}>Customer Rating (high to low)</span>
       <span className="text-gray-700 block px-4 py-2 text-sm cursor-pointer" role="menuitem" 
       tabindex="-1" id="menu-item-0" onClick={lowtohighratingHandler}>Customer Rating (low to high)</span>
-      <span href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" 
-      tabindex="-1" id="menu-item-1">Price high to low</span>
-      <span href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" 
-      tabindex="-1" id="menu-item-1">Price low to high</span>
+      <span href="#" className="text-gray-700 block px-4 py-2 text-sm cursor-pointer" role="menuitem" 
+      tabindex="-1" id="menu-item-1" onClick={hightolowpriceHandler}>Price high to low</span>
+      <span href="#" className="text-gray-700 block px-4 py-2 text-sm cursor-pointer" role="menuitem" 
+      tabindex="-1" id="menu-item-1" onClick={lowtohighpriceHandler}>Price low to high</span>
     </div>
    
   </div>
