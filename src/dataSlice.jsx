@@ -21,7 +21,7 @@ const dataslice = createSlice({
         },
         filterByPrice:(state,action) => {
             //console.log(action.payload)
-        if(action.payload.rating > 0) 
+        if(action.payload.rating > 0)  
         {
             state.filteredData = state.totalData[0]?.filter(cart =>
             (cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue) &&  cart.rating.rate  >= action.payload.rating )
@@ -29,8 +29,13 @@ const dataslice = createSlice({
         else
         state.filteredData = state.totalData[0]?.filter(cart => cart.price >= action.payload.minValue  && cart.price < action.payload.maxValue)
         },
-        
-
+        sortByRatingHighToLow:(state, action) => {
+            state.filteredData =  state.totalData[0].sort((a,b) => b.rating.rate - a.rating.rate)
+        },
+        sortByRatingLowToHigh:(state, action) => {
+            state.filteredData =  state.totalData[0].sort((a,b) => a.rating.rate - b.rating.rate)
+        },
+ 
         // filterByRating:(state,action) => {
         //     console.log(action.payload)
         //     if(action.payload.starrating >0) 
@@ -124,6 +129,6 @@ const dataslice = createSlice({
 })
 
 export const {fetchSearchResult, fetchData,addToCart, toggleSidenav,calcGrandTotal,calcTotalPrice,
-    increaseQty,filterByPrice,filterByRating,
+    increaseQty,filterByPrice,filterByRating,sortByRatingHighToLow,sortByRatingLowToHigh,
      removeFromCart, increaseQuantity, lowTohigh, decreaseQuantity,increasecartQuantity,decreasecartQuantity} = dataslice.actions  
 export default dataslice.reducer
