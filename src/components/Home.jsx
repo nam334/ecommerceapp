@@ -61,7 +61,9 @@ const Home = () => {
   return (
     <>
     <Header/>
-    <div className="grid grid-rows-3 grid-flow-col gap-4">
+    <div className="grid 
+
+     grid-flow-col gap-4">
     <div className="row-span-3 shadow-2xl w-56">
       <Sidenav productsData={productsData}/>
       </div>
