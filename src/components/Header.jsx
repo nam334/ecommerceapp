@@ -54,8 +54,8 @@ const Header = () => {
         <div className='flex gap-3 items-center text-slate-200 font-medium cursor-pointer'>
        <button className='flex gap-4 items-center bg-cyan-800 px-3 py-0 border-2 rounded-md' 
        onClick={()=> dispatch(toggleMenu())} >
-        <AiOutlineShoppingCart className='text-xl'/>
-        <div className='flex flex-col items-start'>
+        <AiOutlineShoppingCart className='text-lg'/>
+        <div className='flex flex-col items-start text-sm'>
         <span>{count} items</span>
         <span className='flex justify-center items-center'><BiRupee className='text-xl' />
          {grandTotal.toFixed(2)}
