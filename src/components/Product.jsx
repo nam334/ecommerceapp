@@ -9,6 +9,7 @@ import { discountCalculation } from '../functions'
 import ShowMoreText from "react-show-more-text";
 import styled, { keyframes } from 'styled-components';
 import {ratingColorCalculation} from '../functions'
+import { useNavigate } from 'react-router-dom'
 
 // const Icon = styled(AiFillStar)`
 //   overflow: hidden;
@@ -18,16 +19,19 @@ const Product = ({product}) => {
     const dispatch = useDispatch()
     const cart =  useSelector(store => store.data?.cart)
    
-    const {theme} = useContext(ThemeContext)
+    const {theme} = useContext(ThemeContext) 
     const [qty, setQty] = useState(1)
     const [count, setCount] = useState(0)
+    const navigate = useNavigate()
+
    
   return (
     <div key={product.id} className={`card w-80
      p-3 flex flex-col 
      hover:bg-cyan-6000 cursor-pointer
     items-center rounded-xl m-4 mx-2 justify-between text-slate-500 fira-sans
-    ${theme === "light" ? "bg-cyan-600 " : "bg-cyan-600 text-slate-200"}`}>
+    ${theme === "light" ? "bg-cyan-600 " : "bg-cyan-600 text-slate-200"}` 
+    }  onClick={()=> navigate(`/product/${product.id}`)}>
     <div className='rounded-md p-4 bg-white'>
     <img src={product.image} alt="" className='w-28 mb-2 h-36 ' /> 
     </div>

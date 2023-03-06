@@ -13,6 +13,7 @@ import Sidebar from './components/Sidebar';
 import UserContext from './UserContext';
 import { useState } from 'react';
 import ThemeContext from './components/ThemeContext';
+import ProductDetails from './components/ProductDetails';
 
 
 function App() {
@@ -23,10 +24,10 @@ function App() {
       element: <Home/>,
     },
     {
-      path: "/cart", 
-      element: <Cart/>,
+      path: "/product/:id", 
+      element: <ProductDetails/>,
     },
-  ]);
+  ]); 
 
   const cartrouter = createBrowserRouter([
     {

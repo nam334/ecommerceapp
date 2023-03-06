@@ -77,10 +77,10 @@ const Home = () => {
         {productsData &&  <button type='button' onClick={descendingHandler} className="bg-cyan-300 text-slate-700 
        font-medium italic rounded text-sm p-2 my-3 mx-3">Sort by price (high to low) </button>}
     </div> */}
-     <div className='flex justify-end'>
+     <div className='flex justify-end p-4'>
       <Sorting/>
     </div>
-    <div className='flex flex-wrap justify-center my-10'>
+    <div className='flex flex-wrap justify-center'>
    
     {
       productsData ? productsData.length > 1 ? 
