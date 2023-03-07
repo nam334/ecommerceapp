@@ -52,7 +52,7 @@ const ProductDetails = () => {
         <div className='flex justify-between font-semibold  text-slate-500  text-sm py-2'>
                   <h4 className='text-sm'>MRP</h4>
                   <span  className='flex items-center'>
-                   <FaRupeeSign/>{product[0]?.price}
+                   <FaRupeeSign/>{product[0]?.price.toFixed(2)}
                    </span>
                   </div>
                   <div className='flex justify-between font-semibold  text-slate-500  text-sm py-2'>
@@ -64,7 +64,7 @@ const ProductDetails = () => {
                   <div className='flex justify-between font-semibold text-slate-500 py-2'>
                   <h4 className='text-sm'>Total price</h4>
                   <span  className='flex items-center text-cyan-800 text-lg'>
-                   <FaRupeeSign/>{product[0]?.discountRate ?  product[0]?.price - product[0]?.discountRate : product[0]?.price }
+                   <FaRupeeSign/>{product[0]?.discountRate ?  (product[0]?.price - product[0]?.discountRate).toFixed(2) : product[0]?.price }
                    </span>
                   </div>
                   <div className='flex flex-col gap-2 my-6'>

@@ -10,6 +10,7 @@ import ShowMoreText from "react-show-more-text";
 import styled, { keyframes } from 'styled-components';
 import {ratingColorCalculation} from '../functions'
 import { useNavigate } from 'react-router-dom'
+import Star from './Star'
 
 // const Icon = styled(AiFillStar)`
 //   overflow: hidden;
@@ -23,23 +24,23 @@ const Product = ({product}) => {
     const [qty, setQty] = useState(1)
     const [count, setCount] = useState(0)
     const navigate = useNavigate()
-
+ 
    
   return (
     <div key={product.id} className={`card w-80
      p-3 flex flex-col 
-     hover:bg-cyan-6000 cursor-pointer
+     hover:bg-cyan-6000 
     items-center rounded-xl m-4 mx-2 justify-between text-slate-500 fira-sans
     ${theme === "light" ? "bg-cyan-600 " : "bg-cyan-600 text-slate-200"}` 
-    }  onClick={()=> navigate(`/product/${product.id}`)}>
-    <div className='rounded-md p-4 bg-white'>
+    }  >
+    <div className='rounded-md p-4 bg-white cursor-pointer' onClick={()=> navigate(`/product/${product.id}`)}>
     <img src={product.image} alt="" className='w-28 mb-2 h-36 ' /> 
     </div>
     <h2 className='text-sm font-semibold text-slate-600 my-2'>{product.title}</h2>
     
     <ShowMoreText
                 /* Default options */
-                lines={3}
+                lines={3} 
                 more="Show more"
                 less="Show less"
                 className="content-css text-sm"
@@ -70,6 +71,7 @@ const Product = ({product}) => {
     <h4 className='text-sm py-2 text-black-200 font-semibold'>{product?.rating?.rate}</h4>
     {/* <AiFillStar className='ratingStar' fill="red" /> */}
     {/* <Icon fill="#FF007F"/> */}
+    <Star rating = {product?.rating?.rate} />
     </div>
     </div> 
    
