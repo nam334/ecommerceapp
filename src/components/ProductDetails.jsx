@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AiFillStar } from 'react-icons/ai'
 import {FaRupeeSign} from "react-icons/fa"
 import Header from './Header'
@@ -14,7 +14,7 @@ const ProductDetails = () => {
    <Header/>
    <div className='px-4'>
    <div className='text-sm font-semibold text-slate-600 my-2 py-4'>
-        <span className='px-3'>Home </span> <span className='px-3'>-</span><span className='px-3'>{product[0].title}</span>
+        <Link className='px-3' to='/'>Home </Link><span className='px-3'>-</span><span className='px-3'>{product[0].title}</span>
     </div>
   <div className="grid grid-cols-4 gap-4">
   <div className='cursor-pointer
