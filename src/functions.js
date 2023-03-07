@@ -16,7 +16,7 @@ export const mergeArrays = (arr1 = [], arr2 = []) => {
     return calculatedPrice.toFixed(2)
 }
 
-export const priceCalculation = (price, qty) => {
+export const priceCalculation = (price, qty) => { 
    let totalPrice =  price * qty 
    return totalPrice
 } 

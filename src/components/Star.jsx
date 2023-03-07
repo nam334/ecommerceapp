@@ -8,21 +8,12 @@ import { ratingColorCalculation } from '../functions';
 
   `; 
 const Star = ({rating}) => {
-    const [rate, setRate] = useState(ratingColorCalculation(rating,5))
-    const filter = (rate) => {
-        return `WebkitFilter:'brightness(ratingColorCalculation(rate,5))'`;
-    }
-    
-//     const Icon = styled(AiFillStar)`
-//   overflow: hidden;
-//   filter: brightness(${ratingColorCalculation(rating,5)}%);
-//   `;
   return (
     <div>
-         <Icon fill="#FF007F" style={{WebkitFilter: `brightness(${rate}%)` }}/>
+         <Icon fill="#FF007F" style={{WebkitFilter: `brightness(${ratingColorCalculation(rating,5)}%)` }}/>
         
     </div>
   )
 }
 
-export default Star
+export default Star 
