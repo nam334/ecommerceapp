@@ -11,7 +11,7 @@ const dataslice = createSlice({
         totalPrice:0,
         totalDiscount : 0,
         grandTotal:0
-    }, 
+    },  
     reducers:{
         fetchData:(state, action)=> {
             state = state.totalData.splice(0,1,action.payload)
@@ -55,7 +55,8 @@ const dataslice = createSlice({
             state.toggleSidebar = !state.toggleSidebar
         },
         addToCart:(state, action) => {
-            console.log(action.payload) 
+            console.log("ADD TO CART" ,action.payload) 
+            console.log(action.payload.product[0])
             action.payload.product?.discountRate &&  (state.totalDiscount  = state.totalDiscount + action.payload.product?.discountRate)
             state.totalPrice = state.totalPrice + (action.payload.product.price * action.payload.qty)
             state = state.cart.push(action.payload)

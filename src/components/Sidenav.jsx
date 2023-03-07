@@ -57,7 +57,7 @@ const Sidenav = ({productsData}) => {
 					<div className='flex items-center text-slate-100 text-sm' ><FaRupeeSign className='text-xs text-slate-100'/>{maxValue}</div>
 				</div>
     <h4 className='text-md font-medium text-slate-100 mt-4'>Customer Ratings</h4>
-    <div class="flex flex-col">
+    <div className="flex flex-col">
     <div className='flex items-end'>
     <input type="checkbox"  checked={checked}
         onChange={(e)=>ratingChangeHandler(e.target.checked)}

@@ -26,7 +26,7 @@ const SearchComp = ({suggestion, suggestionHandler}) => {
           {suggestion.title}
        </h1>
     </div>
-   
+  
   </div> 
   )
 }

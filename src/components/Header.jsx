@@ -14,6 +14,7 @@ import ThemeContext from './ThemeContext';
 
 const Header = () => {
   const cart = useSelector((store) => store.data?.cart)
+ 
   const {theme, setTheme} = useContext(ThemeContext)
   const toggleSidebar = useSelector(store => store.nav.openMenu)
   const [count, setCount] = useState(0)
@@ -79,8 +80,9 @@ const Header = () => {
           
           {
               cart.length ?   cart.map(cart => (
-              
+             
              <>
+             {console.log(cart.product[0])}
              <div className='flex items-center  border-t-2 my-4 py-2 border-gray-200'>
                 <img  src={cart.product.image} alt="product" className='w-16 h-16 border border-gray-200 p-2'/>
                 <div className='flex gap-3 flex-col p-3 justify-center '>
