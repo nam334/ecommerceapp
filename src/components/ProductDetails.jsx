@@ -5,6 +5,8 @@ import { AiFillStar } from 'react-icons/ai'
 import {FaRupeeSign} from "react-icons/fa"
 import Header from './Header'
 import { addToCart, decreaseQuantity, increaseQty, increaseQuantity } from '../dataSlice'
+import ReactImageMagnify from 'react-image-magnify';
+
 const ProductDetails = () => {
     const params = useParams()
     const dispatch = useDispatch()
@@ -24,7 +26,23 @@ const ProductDetails = () => {
   <div className='cursor-pointer
    rounded-xl bg-cyan-600
     '>
-    <img src={product[0]?.image} alt="product images" className='p-6'/>
+    {/* <img src={product[0]?.image} alt="product images" className='p-6'/> */}
+    <ReactImageMagnify {...{
+    smallImage: {
+        alt: 'Wristwatch by Ted Baker London',
+        //isFluidWidth: true,
+        src: product[0]?.image,
+         width: 300,
+        height:450,
+    },
+    largeImage: {
+        src: product[0]?.image,
+        width: 600,
+        height: 1200
+    },
+    isHintEnabled: true,
+    shouldHideHintAfterFirstActivation: false
+}} />
   </div>
   <div className="col-span-2 flex flex-col gap-5 px-2">
     <span className='text-sm font-semibold text-slate-600'>Visit the store</span>
