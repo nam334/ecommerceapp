@@ -12,7 +12,7 @@ const Cart = () => {
   const dispatch = useDispatch()
   // const [qty, setQty] = useState('')
  
-  console.log(cart)
+  console.log(cart) 
   return (
     <div>
       <Header/>
