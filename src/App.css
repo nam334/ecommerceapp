@@ -77,8 +77,18 @@ x{
 .multi-range-slider .bar-inner {
   background-color: #50808e !important;
 }
-.multi-range-slider .thumb::before {
+.multi-range-slider .thumb::before { 
   background-color: #50808e !important;
   border: none !important;
   box-shadow: none !important;
 }
+.input-group span {
+  position: absolute;
+  top: 11px;
+  
+ 
+}
+
+/* .icon-placeholder:not(:placeholder-shown) ~ span {
+  display: none;
+} */

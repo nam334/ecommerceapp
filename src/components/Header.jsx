@@ -46,7 +46,7 @@ const Header = () => {
   return (
      <>
      
-     <div className='bg-cyan-600 py-2 flex justify-around items-center '>
+     <div className='bg-cyan-600 py-2 px-4 flex justify-between items-center '>
         <div className="font-mono text-slate-100 text-lg  font-bold cursor-pointer poppins"><Link to='/'>Shopping Cart</Link></div>
         <div>
             <Search/>
