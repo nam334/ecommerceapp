@@ -4,6 +4,8 @@ import { fetchSearchResult } from '../dataSlice'
 import SearchComp from './SearchComp'
 import { motion } from "framer-motion"
 import Star from './Star'
+import {AiOutlineSearch} from 'react-icons/ai'
+
 
 const containerVariants = {
   hidden: { 
@@ -39,7 +41,7 @@ const Search = () => {
    
    useEffect(()=>{
     let val = []
-    searchData.length && searchData[0].map(search => val.push(search.category ))
+    searchData.length && searchData[0].map(search => val.push(`Search for ${search.category} ...` ))
     setPlaceholder(val.filter((item,index) => val.indexOf(item) === index))
     //inputRef.current.setAttribute('placeholder',placeholder[counter]);
    },[searchData]) 
@@ -58,7 +60,7 @@ const Search = () => {
     counter === 4 && inputRef.current.setAttribute('placeholder',"Search for men's clothing ...");
    const interval = setInterval(()=>{
     ChangePlaceholder()
-   },2000)
+   },3000)
     //undefined , 4
    //console.log("Placeholder", placeholder[counter], counter)
     return () => clearInterval(interval)
@@ -85,13 +87,19 @@ const Search = () => {
   return (
     <>
         <form>
-          <div className='input-group '>
-        <input type='text'  placeholder={`Search for ${placeholder[counter]} ...`}
-            className="placeholder:italic placeholder:text-slate-400 block
-          bg-white w-96 border border-cyan-300 
-            rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none
-          focus:border-cyan-500 focus:ring-cyan-500 focus:ring-1 sm:text-sm 
-          icon-placeholder"
+          <div className='input-group flex items-center '>
+          <AiOutlineSearch className='bg-white rounded-l-lg ml-2 h-[2.1rem] text-slate-400 pl-2 w-6'/> 
+          <input type='text'  placeholder={  placeholder[counter]}
+            className="placeholder:text-slate-400 placeholder:animate-fade   
+            text-[12px]
+             block
+          bg-white w-[30rem] 
+         
+          rounded-r-lg py-2 pl-2 pr-3 shadow-sm focus:outline-none
+          focus:border-none 
+          icon-placeholder 
+          
+          "
           value={text}  
           ref={inputRef} 
           onChange={(e)=> searchHandler(e.target.value)}
@@ -101,7 +109,9 @@ const Search = () => {
           //       setSuggestions([])
           //   },100)
           // }} 
+          
             />
+           
             {/* {
               placeholder.map(placeholder => (
                 <motion.span className='py-2 pl-9 pr-3 mb-2 text-slate-400 mx-3' 

@@ -5,11 +5,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily:{
-        'poppins': [ 'Poppins', 'sans-serif'],
+      // fontFamily:{
+      //   'poppins': [ 'Poppins', 'sans-serif'],
+      // },
+      animation: {
+        "fade": "fadeOut 2s ease-in",
       },
-    },
+      keyframes: (theme) => ({
+        fadeOut: {
+          "0%": { color: theme("colors.amber.300") },
+          "100%": { color: theme("colors.transparent") },
+        },
+      }),
+    }
     
-  },
-  plugins: [],
-}
+  }}
+

@@ -37,11 +37,11 @@ const ProductDetails = () => {
     },
     largeImage: {
         src: product[0]?.image,
-        width: 600,
+        width: 800,
         height: 1200
     },
-    isHintEnabled: true,
-    shouldHideHintAfterFirstActivation: false
+    // isHintEnabled: true,
+    // shouldHideHintAfterFirstActivation: false
 }} />
   </div>
   <div className="col-span-2 flex flex-col gap-5 px-2">
@@ -60,10 +60,10 @@ const ProductDetails = () => {
                 <div className='flex gap-3 flex-col  justify-center '>
                   <h4 className='text-xs p-1'>{product[0]?.title}</h4>
                   <div className='flex justify-between items-end'>
-                  <h4 className='text-sm py-2 text-black-200 flex justify-center items-center'>
+                  <h5 className='text-sm py-2 text-black-200 flex justify-center items-center'>
                   {/* <FaRupeeSign/>{product[0]?.price} */}
-                  <h5 className='text-xs p-1'>Category - {product[0]?.category}</h5>
-                  </h4>
+                  <h4 className='text-xs p-1'>Category - {product[0]?.category}</h4>
+                  </h5>
                   </div>
                 </div>
         </div>
