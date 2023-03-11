@@ -55,8 +55,8 @@ const dataslice = createSlice({
             state.toggleSidebar = !state.toggleSidebar
         },
         addToCart:(state, action) => {
-            console.log("ADD TO CART" ,action.payload) 
-            console.log(action.payload.product[0])
+           // console.log("ADD TO CART" ,action.payload) 
+           // console.log(action.payload.product[0])
             action.payload.product?.discountRate &&  (state.totalDiscount  = state.totalDiscount + action.payload.product?.discountRate)
             state.totalPrice = state.totalPrice + (action.payload.product.price * action.payload.qty)
             state = state.cart.push(action.payload)
@@ -128,7 +128,7 @@ const dataslice = createSlice({
         },
        
         calcGrandTotal:(state,action) => {
-            console.log(action.payload)
+           // console.log(action.payload)
            state.grandTotal = action.payload.totalPrice - action.payload.totalDiscount
         }   
     }

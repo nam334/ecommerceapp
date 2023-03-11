@@ -34,7 +34,7 @@ const Home = () => {
         // let totalProducts = [...[result, productsWithDiscounts].reduce((m, a) => (a.forEach(o => m.has(o.ObjId) && Object.assign(m.get(o.ObjId), o) || m.set(o.ObjId, o)), m), new Map()).values()];
         // console.log(totalProducts)
         let totalProducts = mergeArrays(result, productsWithDiscounts)
-        console.log(totalProducts)
+       // console.log(totalProducts)
         dispatch(fetchData(totalProducts)) 
   }
   
@@ -43,14 +43,14 @@ const Home = () => {
    
     let ascendingArray = productsData[0].slice().sort((a, b) => a.price - b.price)
     setArr(ascendingArray)
-    console.log(ascendingArray)
+  //  console.log(ascendingArray)
     setDesArr([])
   }
   const descendingHandler = () => {
    
     let descendingArray = productsData[0].slice().sort((a, b) => b.price - a.price)
     setDesArr(descendingArray)
-    console.log(descendingArray)
+    //console.log(descendingArray)
     setArr([])
   }
 

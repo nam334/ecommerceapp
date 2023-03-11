@@ -41,24 +41,42 @@ const Search = () => {
     let val = []
     searchData.length && searchData[0].map(search => val.push(search.category ))
     setPlaceholder(val.filter((item,index) => val.indexOf(item) === index))
+    //inputRef.current.setAttribute('placeholder',placeholder[counter]);
    },[searchData]) 
 
-   useEffect(()=>{
-    //inputRef.current.setAttribute('placeholder','hi');
+  useEffect(()=>{
+    //inputRef.current.setAttribute('placeholder',placeholder[counter]);
     function ChangePlaceholder(){
-      
-      if(counter>= placeholder.length){
+      if(counter === 4 ){
        setCounter(0)
+       //console.log('hi')
       }
-     
-     inputRef.current.setAttribute('placeholder',placeholder[counter]);
-    
-      setCounter((prevCounter)=> prevCounter+1)
+      //0
+     counter<=3 && inputRef.current.setAttribute('placeholder', placeholder[counter]);
+     setCounter((prevCounter)=> prevCounter + 1)
     }
-  
-    setInterval(ChangePlaceholder,2000);
-   // return(()=> res())
-  },[counter, placeholder, inputRef])
+    counter === 4 && inputRef.current.setAttribute('placeholder',"Search for men's clothing ...");
+   const interval = setInterval(()=>{
+    ChangePlaceholder()
+   },2000)
+    //undefined , 4
+   //console.log("Placeholder", placeholder[counter], counter)
+    return () => clearInterval(interval)
+    
+  },[placeholder,counter])
+  //  useEffect(()=>{
+  //   function ChangePlaceholder(){
+  //     if(counter>= placeholder.length){
+  //      setCounter(0)
+  //     }
+  //    inputRef.current.setAttribute('placeholder',placeholder[counter]);
+  //    setCounter((prevCounter)=> prevCounter+1)
+  //   }
+  //  const interval = setInterval(()=>{
+  //   ChangePlaceholder()
+  //  },2000)
+  //   return () => clearInterval(interval)
+  // },[])
 
   const suggestionHandler = (textIn) => {
         setText(textIn)
@@ -68,7 +86,7 @@ const Search = () => {
     <>
         <form>
           <div className='input-group '>
-        <input type='text'  placeholder="Search for..."
+        <input type='text'  placeholder={`Search for ${placeholder[counter]} ...`}
             className="placeholder:italic placeholder:text-slate-400 block
           bg-white w-96 border border-cyan-300 
             rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none
