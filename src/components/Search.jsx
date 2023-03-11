@@ -88,14 +88,14 @@ const Search = () => {
     <>
         <form>
           <div className='input-group flex items-center '>
-          <AiOutlineSearch className='bg-white rounded-l-lg ml-2 h-[2.1rem] text-slate-400 pl-2 w-6'/> 
+          <AiOutlineSearch className='bg-white rounded-l-lg ml-2 h-[2.5rem] text-slate-400 pl-2 w-6'/> 
           <input type='text'  placeholder={  placeholder[counter]}
             className="placeholder:text-slate-400 placeholder:animate-fade   
             text-[12px]
              block
           bg-white w-[30rem] 
          
-          rounded-r-lg py-2 pl-2 pr-3 shadow-sm focus:outline-none
+          rounded-r-lg h-[2.5rem] pl-2 pr-3 shadow-sm focus:outline-none
           focus:border-none 
           icon-placeholder 
           

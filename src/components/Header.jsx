@@ -46,19 +46,20 @@ const Header = () => {
   return (
      <>
      
-     <div className='bg-cyan-600 py-2 px-4 flex justify-between items-center '>
-        <div className="font-mono text-slate-100 text-lg  font-bold cursor-pointer poppins"><Link to='/'>Shopping Cart</Link></div>
+     <div className='bg-cyan-600 py-4 px-4 flex justify-between items-center '>
+        <div className="font-mono text-slate-100 text-lg  font-bold cursor-pointer poppins">
+          <Link to='/'>blinkit</Link></div>
         <div>
             <Search/>
         </div>
         <div>
-        <div className='flex gap-3 items-center text-slate-200 font-medium cursor-pointer'>
-       <button className='flex gap-4 items-center bg-cyan-800 px-3 py-0 border-2 rounded-md' 
+        <div className='flex  items-center text-slate-200 font-medium cursor-pointer h-4'>
+       <button className='flex gap-2 items-center bg-cyan-800 px-4 py-[0.2rem] border-2 rounded-lg' 
        onClick={()=> dispatch(toggleMenu())} >
-        <AiOutlineShoppingCart className='text-lg'/>
-        <div className='flex flex-col items-start text-sm'>
+        <AiOutlineShoppingCart className='text-lg '/>
+        <div className='flex flex-col items-start text-sm '>
         <span>{count} items</span>
-        <span className='flex justify-center items-center'><BiRupee className='text-xl' />
+        <span className='flex justify-center items-center'><BiRupee className='text-sm' />
          {grandTotal.toFixed(2)}
          </span>
         </div>
