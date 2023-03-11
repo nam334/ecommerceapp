@@ -63,13 +63,13 @@ const Home = () => {
     <Header/>
     <div className="grid 
 
-     grid-flow-col gap-4">
-    <div className="row-span-3 shadow-2xl w-56">
+     grid-flow-col">
+    <div className="row-span-3  w-56 bg-slate-100">
       <Sidenav productsData={productsData}/>
       </div>
-    <div className="col-span-2">
+    <div className="col-span-2 ">
     <div className="row">
-    <div className="col-span-12">
+    <div className="col-span-12 bg-slate-100">
     {/* <div className='flex justify-end'>
        {productsData &&  <button type='button' onClick={ascendingHandler} className="bg-cyan-300 text-slate-700 
        font-medium italic rounded text-sm p-2 my-3 mx-3">Sort by price (low to high) </button>}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import { AiOutlineShoppingCart,AiOutlineClose } from "react-icons/ai";
+import {BsCart4} from "react-icons/bs"
 import {BiRupee} from "react-icons/bi"
 import {FaRupeeSign} from "react-icons/fa"
 import {  useDispatch, useSelector } from 'react-redux'
@@ -46,17 +47,17 @@ const Header = () => {
   return (
      <>
      
-     <div className='bg-cyan-600 py-4 px-4 flex justify-between items-center '>
+     <div className='bg-slate-300 py-4 px-4 flex justify-between items-center '>
         <div className="font-mono text-slate-100 text-lg  font-bold cursor-pointer poppins">
           <Link to='/'>blinkit</Link></div>
         <div>
             <Search/>
         </div>
         <div>
-        <div className='flex  items-center text-slate-200 font-medium cursor-pointer h-4'>
-       <button className='flex gap-2 items-center bg-cyan-800 px-4 py-[0.2rem] border-2 rounded-lg' 
+        <div className='flex  items-center text-slate-50 font-medium cursor-pointer h-4'>
+       <button className='flex gap-2 items-center bg-slate-400 px-4 py-[0.2rem] rounded-lg' 
        onClick={()=> dispatch(toggleMenu())} >
-        <AiOutlineShoppingCart className='text-lg '/>
+        <BsCart4 className='text-[1.4rem] '/>
         <div className='flex flex-col items-start text-sm '>
         <span>{count} items</span>
         <span className='flex justify-center items-center'><BiRupee className='text-sm' />
