@@ -47,15 +47,15 @@ const Header = () => {
   return (
      <>
      
-     <div className='bg-slate-300 py-4 px-4 flex justify-between items-center '>
+     <div className='bg-slate-500 py-4 px-4 flex justify-between items-center '>
         <div className="font-mono text-slate-100 text-lg  font-bold cursor-pointer poppins">
-          <Link to='/'>blinkit</Link></div>
+          <Link to='/'>blinkit</Link></div> 
         <div>
             <Search/>
         </div>
         <div>
         <div className='flex  items-center text-slate-50 font-medium cursor-pointer h-4'>
-       <button className='flex gap-2 items-center bg-slate-400 px-4 py-[0.2rem] rounded-lg' 
+       <button className='flex gap-2 items-center bg-yellow-500 px-4 py-[0.2rem] rounded-lg' 
        onClick={()=> dispatch(toggleMenu())} >
         <BsCart4 className='text-[1.4rem] '/>
         <div className='flex flex-col items-start text-sm '>

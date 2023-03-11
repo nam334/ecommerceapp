@@ -31,18 +31,19 @@ const Product = ({product}) => {
   return (
     <div key={product.id} className={`card w-80   
      p-3 flex flex-col 
-     hover:bg-cyan-6000 
+     hover:bg-slate-200
     items-center  m-4 mx-2 justify-between text-slate-500 fira-sans 
     bg-slate-50 rounded-md
     `
     }  
 
     >
-    <div className=' p-4  cursor-pointer    
+    <div className=' p-4  cursor-pointer  flex justify-center items-center  
     ' onClick={()=> navigate(`/product/${product.id}`)}>
+       <h2 className='text-sm font-semibold text-slate-600 my-2'>{product.title}</h2>
     <img src={product.image} alt="" className='w-28 mb-2 h-36 ' /> 
     </div>
-    <h2 className='text-sm font-semibold text-slate-600 my-2'>{product.title}</h2>
+   
     
     <ShowMoreText
                 /* Default options */
