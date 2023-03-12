@@ -10,6 +10,7 @@ import ThemeContext from './ThemeContext'
 import { discountCalculation } from '../functions'
 import ShowMoreText from "react-show-more-text";
 import styled, { keyframes } from 'styled-components';
+import { motion } from 'framer-motion';
 import {ratingColorCalculation} from '../functions'
 import { useNavigate } from 'react-router-dom'
 import Star from './Star'
@@ -26,17 +27,29 @@ const Product = ({product}) => {
     const [qty, setQty] = useState(1)
     const [count, setCount] = useState(0)
     const navigate = useNavigate()
- 
+    const cardVariants = {
+      hover: {
+        //scale: 1.5,
+        scale: 1.02,
+        textShadow: "0px 0px 8px rgb(255,255,255)",
+        //boxShadow: "0px 0px 8px rgb(255,255,255)",
+        transition: {
+          repeatType: "mirror",
+          repeat: 1,
+        }
+      }
+    }
    // ${theme === "light" ? "bg-cyan-600 " : "bg-cyan-600 text-slate-200"}` 
   return (
-    <div key={product.id} className={`card w-80   
+    <motion.div key={product.id} className={`card w-80   
      p-3 flex flex-col 
      hover:bg-slate-200
     items-center  m-4 mx-2 justify-between text-slate-500 fira-sans 
     bg-slate-50 rounded-md
     `
     }  
-
+    variants={cardVariants}
+          whileHover="hover"
     >
     <div className=' p-4  cursor-pointer  flex justify-center items-center  
     ' onClick={()=> navigate(`/product/${product.id}`)}>
@@ -122,7 +135,7 @@ const Product = ({product}) => {
 
 
     </div>
-</div>
+</motion.div>
   )
 }
 

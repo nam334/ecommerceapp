@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { AiOutlineShoppingCart,AiOutlineClose } from "react-icons/ai";
 import {BsCart4} from "react-icons/bs"
 import {BiRupee} from "react-icons/bi"
+import { motion } from 'framer-motion';
 import {FaRupeeSign} from "react-icons/fa"
 import {  useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
@@ -26,6 +27,18 @@ const Header = () => {
   const grandTotal = useSelector(store => store.data.grandTotal)
   const  totalPrice = useSelector(store => store.data.totalPrice)
   const totalDiscount = useSelector(store => store.data.totalDiscount)
+  const buttonVariants = {
+    hover: {
+      //scale: 1.5,
+      scale:1.3,
+      textShadow: "0px 0px 8px rgb(255,255,255)",
+      //boxShadow: "0px 0px 8px rgb(255,255,255)",
+      transition: {
+        repeatType: "mirror",
+        repeat: Infinity,
+      }
+    }
+  }
   useEffect(()=>{
     let counter = 0
     cart.map(cart => (
@@ -57,7 +70,8 @@ const Header = () => {
         <div className='flex  items-center text-slate-50 font-medium cursor-pointer h-4'>
        <button className='flex gap-2 items-center bg-yellow-500 px-4 py-[0.2rem] rounded-lg' 
        onClick={()=> dispatch(toggleMenu())} >
-        <BsCart4 className='text-[1.4rem] '/>
+        <motion.span variants={buttonVariants}
+          whileHover="hover"><BsCart4 className='text-[1.4rem]' /></motion.span>
         <div className='flex flex-col items-start text-sm '>
         <span>{count} items</span>
         <span className='flex justify-center items-center'><BiRupee className='text-sm' />
