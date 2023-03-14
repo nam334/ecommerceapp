@@ -14,6 +14,9 @@ import { motion } from 'framer-motion';
 import {ratingColorCalculation} from '../functions'
 import { useNavigate } from 'react-router-dom'
 import Star from './Star'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 // const Icon = styled(AiFillStar)`
 //   overflow: hidden;

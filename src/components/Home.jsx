@@ -10,6 +10,9 @@ import Header from './Header'
 import Sidebar from './Sidebar' 
 import Sidenav from './Sidenav'
 import Sorting from './Sorting'
+//import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import SkeletonVideo from './SkeletonVideo'
 
 const Home = () => { 
   const [arr, setArr] = useState([])
@@ -65,33 +68,26 @@ const Home = () => {
        <div className="col-span-1   bg-slate-100">
         <Sidenav productsData={productsData}/>
        </div>
-  <div className="col-span-4 bg-slate-100">
+  <div className="col-span-4 ">
      <div className='flex justify-end p-4'>
       <Sorting/>
-    </div>
+    </div> 
     <div className='flex flex-wrap justify-center'>
-    {
+    {/* {
       productsData ? productsData.length > 1 ? 
       productsData.map((product)=> (
         <Product product={product} key={product.id}/> 
      ))  
-      :  <Product product={productsData} key={productsData.id}/>  : <h1>LOADING.......</h1>
+      :  <Product product={productsData} key={productsData.id}/>  :
+       new Array(10).fill().map(() => <SkeletonVideo  />)
+    } */}
+    {
+       new Array(10).fill().map(() => <SkeletonVideo  />)
     }
-       </div> 
-   </div>
-
-
-
-
-
-
-
-
-
-   
+       </div>  
+   </div>  
 </div>
-    </>
-   
+    </> 
   )
 }
 
