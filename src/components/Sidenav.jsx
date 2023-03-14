@@ -32,7 +32,7 @@ const Sidenav = ({productsData}) => {
      !checkedRating && dispatch( filterByPrice({maxValue,minValue,rating}))
  }
   return (
-  <div className='p-6 h-full w-full bg-slate-50 mt-5 ml-5 rounded-lg'>
+  <div className='p-6 h-full w-full bg-slate-50 mt-5 rounded-lg'>
     <span className='font-bold font-mono text-slate-100 text-xl  cursor-pointer poppins py-2'>FILTERS</span>
    <label htmlFor="default-range" 
    className="block mb-2 text-md font-medium text-slate-100 dark:text-white py-2">Price range</label>

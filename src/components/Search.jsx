@@ -60,7 +60,7 @@ const Search = () => {
     counter === 4 && inputRef.current.setAttribute('placeholder',"Search for men's clothing ...");
    const interval = setInterval(()=>{
     ChangePlaceholder()
-   },3000)
+   },2000)
     //undefined , 4
    //console.log("Placeholder", placeholder[counter], counter)
     return () => clearInterval(interval)

@@ -60,43 +60,36 @@ const Home = () => {
   }
   return (
     <>
-    <Header/>
-    <div className="grid 
-
-     grid-flow-col">
-    <div className="row-span-3  w-56 bg-slate-100">
-      <Sidenav productsData={productsData}/>
-      </div>
-    <div className="col-span-2 ">
-    <div className="row">
-    <div className="col-span-12 bg-slate-100">
-    {/* <div className='flex justify-end'>
-       {productsData &&  <button type='button' onClick={ascendingHandler} className="bg-cyan-300 text-slate-700 
-       font-medium italic rounded text-sm p-2 my-3 mx-3">Sort by price (low to high) </button>}
-
-        {productsData &&  <button type='button' onClick={descendingHandler} className="bg-cyan-300 text-slate-700 
-       font-medium italic rounded text-sm p-2 my-3 mx-3">Sort by price (high to low) </button>}
-    </div> */}
+    <Header/> 
+    <div className="grid grid-flow-row-dense grid-rows-3 grid-cols-5">
+       <div className="col-span-1   bg-slate-100">
+        <Sidenav productsData={productsData}/>
+       </div>
+  <div className="col-span-4 bg-slate-100">
      <div className='flex justify-end p-4'>
       <Sorting/>
     </div>
     <div className='flex flex-wrap justify-center'>
-   
     {
       productsData ? productsData.length > 1 ? 
-    //  productsData.slice((page * 5) - 5, page * 5).map((product)=> (
       productsData.map((product)=> (
         <Product product={product} key={product.id}/> 
      ))  
       :  <Product product={productsData} key={productsData.id}/>  : <h1>LOADING.......</h1>
     }
-    </div> 
-    </div>
-    </div>
-  </div>
-  
+       </div> 
+   </div>
+
+
+
+
+
+
+
+
+
+   
 </div>
-    
     </>
    
   )
