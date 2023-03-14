@@ -64,7 +64,7 @@ const Home = () => {
   return (
     <>
     <Header/> 
-    <div className="grid grid-flow-row-dense grid-rows-3 grid-cols-5">
+    <div className="grid grid-flow-row-dense  grid-cols-5">
        <div className="col-span-1   bg-slate-100">
         <Sidenav productsData={productsData}/>
        </div>
@@ -73,17 +73,15 @@ const Home = () => {
       <Sorting/>
     </div> 
     <div className='flex flex-wrap justify-center'>
-    {/* {
+    {
       productsData ? productsData.length > 1 ? 
       productsData.map((product)=> (
         <Product product={product} key={product.id}/> 
      ))  
       :  <Product product={productsData} key={productsData.id}/>  :
-       new Array(10).fill().map(() => <SkeletonVideo  />)
-    } */}
-    {
-       new Array(10).fill().map(() => <SkeletonVideo  />)
+       new Array(20).fill().map(() => <SkeletonVideo  />)
     }
+  
        </div>  
    </div>  
 </div>
