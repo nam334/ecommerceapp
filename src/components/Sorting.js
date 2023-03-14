@@ -1,25 +1,47 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { sortByRatingHighToLow,sortByRatingLowToHigh,sortByPriceHighToLow,sortByPriceLowToHigh } from '../dataSlice'
+import SkeletonVideo from './SkeletonVideo'
 
-const Sorting = () => {
+const Sorting = ({loader, setLoader}) => {
 const [toggle, setToggle] = useState(false)
+//const [loader, setLoader] = useState(false)
 const dispatch = useDispatch()
 const toggleHandler = () => {
     setToggle(prevState => !prevState)
 }
 const hightolowratingHandler = () => {
-    console.log("sort")
+  setLoader(true)
+  setTimeout(() => {
     dispatch(sortByRatingHighToLow())
+    setLoader(false)
+  }, 1000);
 }
 const lowtohighratingHandler = () => {
+  setLoader(true)
+  setTimeout(() => {
     dispatch(sortByRatingLowToHigh())
+    setLoader(false)
+  }, 1000);
 }
 const hightolowpriceHandler = () => {
-    dispatch(sortByPriceHighToLow())
+  setLoader(true)
+  setTimeout(() => {
+    dispatch(sortByPriceHighToLow()) 
+    setLoader(false)
+  }, 1000);
+
+   
 }
 const lowtohighpriceHandler = () => {
+  setLoader(true)
+  setTimeout(() => {
     dispatch(sortByPriceLowToHigh())
+    setLoader(false)
+  }, 1000);
+
+
+   
 }
   return (
    <>
